@@ -19,3 +19,14 @@ $factory->define(Dashboard\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(Dashboard\Client::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->name,
+        'responsible' => $faker->name,
+        'email' => $faker->safeEmail,
+        'phone' => $faker->phoneNumber,
+        'address' => $faker->address,
+        'obs' => $faker->sentence
+    ];
+});
