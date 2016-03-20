@@ -3,7 +3,7 @@
 namespace Dashboard\Http\Controllers;
 
 use Dashboard\Entities\Client;
-use Dashboard\Repositories\ClientRepositoryEloquent;
+use Dashboard\Repositories\ClientRepository;
 use Illuminate\Http\Request;
 
 use Dashboard\Http\Requests;
@@ -15,7 +15,7 @@ class ClientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(ClientRepositoryEloquent $repository)
+    public function index(ClientRepository $repository)
     {
         return $repository->all();
     }

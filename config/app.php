@@ -147,8 +147,9 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        
+
         Prettus\Repository\Providers\RepositoryServiceProvider::class,
+        \Dashboard\Providers\DashboardRepositoryProvider::class,
 
         /*
          * Application Service Providers...
