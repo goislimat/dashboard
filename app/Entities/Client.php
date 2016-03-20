@@ -1,6 +1,6 @@
 <?php
 
-namespace Dashboard;
+namespace Dashboard\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 

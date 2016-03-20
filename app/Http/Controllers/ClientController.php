@@ -2,7 +2,8 @@
 
 namespace Dashboard\Http\Controllers;
 
-use Dashboard\Client;
+use Dashboard\Entities\Client;
+use Dashboard\Repositories\ClientRepositoryEloquent;
 use Illuminate\Http\Request;
 
 use Dashboard\Http\Requests;
@@ -14,19 +15,9 @@ class ClientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(ClientRepositoryEloquent $repository)
     {
-        return Client::all();
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return $repository->all();
     }
 
     /**
@@ -37,7 +28,7 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return Client::create($request->all());
     }
 
     /**
@@ -48,18 +39,7 @@ class ClientController extends Controller
      */
     public function show($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        return Client::find($id);
     }
 
     /**
@@ -82,6 +62,6 @@ class ClientController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Client::find($id)->delete();
     }
 }

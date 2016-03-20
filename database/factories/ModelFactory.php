@@ -11,7 +11,7 @@
 |
 */
 
-$factory->define(Dashboard\User::class, function (Faker\Generator $faker) {
+$factory->define(Dashboard\Entities\User::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->name,
         'email' => $faker->safeEmail,
@@ -20,7 +20,7 @@ $factory->define(Dashboard\User::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(Dashboard\Client::class, function (Faker\Generator $faker) {
+$factory->define(Dashboard\Entities\Client::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->name,
         'responsible' => $faker->name,

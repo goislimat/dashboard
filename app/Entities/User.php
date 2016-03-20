@@ -1,6 +1,6 @@
 <?php
 
-namespace Dashboard;
+namespace Dashboard\Entities;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
