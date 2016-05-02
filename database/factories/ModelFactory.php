@@ -30,3 +30,15 @@ $factory->define(Dashboard\Entities\Client::class, function (Faker\Generator $fa
         'obs' => $faker->sentence
     ];
 });
+
+$factory->define(Dashboard\Entities\Project::class, function (Faker\Generator $faker) {
+    return [
+        'owner_id' => Dashboard\Entities\User::all()->random()->id,
+        'client_id' => Dashboard\Entities\Client::all()->random()->id,
+        'name' => $faker->name,
+        'description' => $faker->sentence(20, true),
+        'progress' => $faker->numberBetween(0, 100),
+        'status' => $faker->randomElement(array ('Projeto','Desenvolvimento','Produção')),
+        'due_date' => $faker->date('Y-m-d')
+    ];
+});

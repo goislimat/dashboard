@@ -4,6 +4,8 @@ namespace Dashboard\Providers;
 
 use Dashboard\Repositories\ClientRepository;
 use Dashboard\Repositories\ClientRepositoryEloquent;
+use Dashboard\Repositories\ProjectRepository;
+use Dashboard\Repositories\ProjectRepositoryEloquent;
 use Illuminate\Support\ServiceProvider;
 
 class DashboardRepositoryProvider extends ServiceProvider
@@ -28,6 +30,11 @@ class DashboardRepositoryProvider extends ServiceProvider
         $this->app->bind(
             ClientRepository::class,
             ClientRepositoryEloquent::class
+        );
+        
+        $this->app->bind(
+            ProjectRepository::class,
+            ProjectRepositoryEloquent::class
         );
     }
 }
