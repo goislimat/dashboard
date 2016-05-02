@@ -6,15 +6,15 @@ use Illuminate\Http\Request;
 
 use Dashboard\Http\Requests;
 
-use Dashboard\Repositories\ProjectRepository;
-use Dashboard\Services\ProjectService;
+use Dashboard\Repositories\ProjectNoteRepository;
+use Dashboard\Services\ProjectNoteService;
 
-class ProjectController extends Controller
+class ProjectNoteController extends Controller
 {
     private $repository;
     private $service;
     
-    public function __construct(ProjectRepository $repository, ProjectService $service)
+    public function __construct(ProjectNoteRepository $repository, ProjectNoteService $service)
     {
         $this->repository = $repository;
         
@@ -26,9 +26,9 @@ class ProjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($projectId)
     {
-        return $this->repository->with(['owner', 'client'])->all();
+        return $this->repository->findWhere(['project_id' => $projectId]);
     }
 
     /**
@@ -37,7 +37,7 @@ class ProjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $projectId)
     {
         return $this->service->store($request->all());
     }
@@ -48,9 +48,9 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($projectId, $id)
     {
-        return $this->repository->with(['owner', 'client'])->find($id);
+        return $this->repository->findWhere(['project_id' => $projectId, 'id' => $id]);
     }
 
     /**
@@ -60,7 +60,7 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $projectId, $id)
     {
         $this->service->update($request->all(), $id);
     }
@@ -71,7 +71,7 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($projectId, $id)
     {
         $this->repository->delete($id);
     }

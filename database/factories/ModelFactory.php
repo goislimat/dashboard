@@ -27,7 +27,7 @@ $factory->define(Dashboard\Entities\Client::class, function (Faker\Generator $fa
         'email' => $faker->safeEmail,
         'phone' => $faker->phoneNumber,
         'address' => $faker->address,
-        'obs' => $faker->sentence
+        'obs' => $faker->sentence,
     ];
 });
 
@@ -35,10 +35,18 @@ $factory->define(Dashboard\Entities\Project::class, function (Faker\Generator $f
     return [
         'owner_id' => Dashboard\Entities\User::all()->random()->id,
         'client_id' => Dashboard\Entities\Client::all()->random()->id,
-        'name' => $faker->name,
+        'name' => $faker->word,
         'description' => $faker->sentence(20, true),
         'progress' => $faker->numberBetween(0, 100),
         'status' => $faker->randomElement(array ('Projeto','Desenvolvimento','Produção')),
-        'due_date' => $faker->date('Y-m-d')
+        'due_date' => $faker->date('Y-m-d'),
+    ];
+});
+
+$factory->define(Dashboard\Entities\ProjectNote::class, function (Faker\Generator $faker) {
+    return [
+        'project_id' => Dashboard\Entities\Project::all()->random()->id,
+        'title' => $faker->word,
+        'note' => $faker->paragraph,
     ];
 });

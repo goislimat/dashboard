@@ -2,10 +2,6 @@
 
 namespace Dashboard\Providers;
 
-use Dashboard\Repositories\ClientRepository;
-use Dashboard\Repositories\ClientRepositoryEloquent;
-use Dashboard\Repositories\ProjectRepository;
-use Dashboard\Repositories\ProjectRepositoryEloquent;
 use Illuminate\Support\ServiceProvider;
 
 class DashboardRepositoryProvider extends ServiceProvider
@@ -28,13 +24,18 @@ class DashboardRepositoryProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(
-            ClientRepository::class,
-            ClientRepositoryEloquent::class
+            \Dashboard\Repositories\ClientRepository::class,
+            \Dashboard\Repositories\ClientRepositoryEloquent::class
         );
         
         $this->app->bind(
-            ProjectRepository::class,
-            ProjectRepositoryEloquent::class
+            \Dashboard\Repositories\ProjectRepository::class,
+            \Dashboard\Repositories\ProjectRepositoryEloquent::class
+        );
+        
+        $this->app->bind(
+            \Dashboard\Repositories\ProjectNoteRepository::class,
+            \Dashboard\Repositories\ProjectNoteRepositoryEloquent::class
         );
     }
 }
