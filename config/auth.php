@@ -67,7 +67,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => Dashboard\User::class,
+            'model' => Dashboard\Entities\User::class,
         ],
 
         // 'users' => [
