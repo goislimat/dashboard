@@ -6,16 +6,19 @@ use Illuminate\Http\Request;
 
 use Dashboard\Http\Requests;
 
-use Dashboard\Entities\Project;
 use Dashboard\Repositories\ProjectRepository;
+use Dashboard\Services\ProjectService;
 
 class ProjectController extends Controller
 {
     private $repository;
+    private $service;
     
-    public function __construct(ProjectRepository $repository)
+    public function __construct(ProjectRepository $repository, ProjectService $service)
     {
         $this->repository = $repository;
+        
+        $this->service = $service;
     }
     
     /**
@@ -25,7 +28,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        return $this->repository->all();
+        return $this->repository->with(['owner', 'client'])->all();
     }
 
     /**
@@ -36,7 +39,7 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        return $this->repository->create($request->all());
+        return $this->service->store($request->all());
     }
 
     /**
@@ -47,7 +50,7 @@ class ProjectController extends Controller
      */
     public function show($id)
     {
-        return $this->repository->find($id);
+        return $this->repository->with(['owner', 'client'])->find($id);
     }
 
     /**
@@ -59,7 +62,7 @@ class ProjectController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return $this->repository->update($request->all(), $id);
+        return $this->service->update($request->all(), $id);
     }
 
     /**
