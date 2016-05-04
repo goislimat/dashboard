@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
+use Prettus\Validator\Exceptions\ValidatorException;
+
 class Handler extends ExceptionHandler
 {
     /**
@@ -45,6 +47,18 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
+        if ($e instanceof ModelNotFoundException) {
+            return [
+                'error' => true,
+                'message' => 'This item doesn\'t exist' 
+            ];
+        } else if ($e instanceof ValidatorException ) {
+            return [
+                'error' => true,
+                'message' => 'The item couldn\'t be updated or doesn\'t exist' 
+            ];
+        }
+        
         return parent::render($request, $e);
     }
 }

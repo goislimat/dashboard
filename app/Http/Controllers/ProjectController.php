@@ -57,7 +57,7 @@ class ProjectController extends Controller
         {
             return $this->repository->with(['owner', 'client'])->find($id);
         }
-        return ['error' => 'You do not have access rights for this project'];
+        return ['error' => 'You don\'t have the access rights for this project'];
     }
 
     /**
@@ -72,6 +72,7 @@ class ProjectController extends Controller
         if($this->checkPrivileges($id))
         {
             $this->service->update($request->all(), $id);
+            return ['success' => true, 'message' => 'The project has been updated'];
         }
         return ['error' => 'You do not have access rights for this project'];
     }
@@ -87,6 +88,7 @@ class ProjectController extends Controller
         if($this->checkIsOwner($id))
         {
             $this->repository->delete($id);
+            return ['success' => true, 'message' => 'The project has been deleted'];
         }
         return ['error' => 'You do not have access rights to finish this action'];
     }

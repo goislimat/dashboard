@@ -6,6 +6,8 @@ use Dashboard\Repositories\ClientRepository;
 use Dashboard\Services\ClientService;
 use Illuminate\Http\Request;
 
+use Illuminate\Database\QueryException as QueryException;
+
 class ClientController extends Controller
 {
     /**
@@ -67,6 +69,7 @@ class ClientController extends Controller
     public function update(Request $request, $id)
     {
         $this->service->update($request->all(), $id);
+        return ['success' => true, 'message' => 'The client has been updated'];
     }
 
     /**
@@ -77,6 +80,18 @@ class ClientController extends Controller
      */
     public function destroy($id)
     {
-        $this->repository->delete($id);
+        try
+        {
+            $this->repository->delete($id);
+            return ['success' => true, 'message' => 'The client has been deleted'];
+        }
+        catch(QueryException $e)
+        {
+            return ['error' => true, 'message' => 'Failed when trying to delete this client. You should first delete the projects owned by this client.'];
+        }
+        catch(\Exception $e)
+        {
+            return ['error' => true, 'message' => 'A unknown error has been thrown'];
+        }
     }
 }
