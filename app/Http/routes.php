@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('app');
+    return view('welcome');
 });
 
 /*
@@ -40,6 +40,8 @@ Route::group(['middleware' => 'oauth'], function() {
         Route::get('{projectId}/note/{id}', 'ProjectNoteController@show');
         Route::put('{projectId}/note/{id}', 'ProjectNoteController@update');
         Route::delete('{projectId}/note/{id}', 'ProjectNoteController@destroy');
+        
+        Route::resource('{projectId}/task', 'ProjectTaskController', ['except' => ['create', 'edit']]);
 
         Route::post('{projectId}/file', 'ProjectFileController@store');
     });

@@ -42,5 +42,10 @@ class DashboardRepositoryProvider extends ServiceProvider
             \Dashboard\Repositories\ProjectFileRepository::class,
             \Dashboard\Repositories\ProjectFileRepositoryEloquent::class
         );
+
+        $this->app->bind(
+            \Dashboard\Repositories\ProjectTaskRepository::class,
+            \Dashboard\Repositories\ProjectTaskRepositoryEloquent::class
+        );
     }
 }
