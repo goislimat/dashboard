@@ -50,3 +50,13 @@ $factory->define(Dashboard\Entities\ProjectNote::class, function (Faker\Generato
         'note' => $faker->paragraph,
     ];
 });
+
+$factory->define(Dashboard\Entities\ProjectTask::class, function (Faker\Generator $faker) {
+    return [
+        'project_id' => Dashboard\Entities\Project::all()->random()->id,
+        'name' => $faker->sentence(3, true),
+        'start_date' => $faker->dateTimeBetween('-1 month', 'now'),
+        'due_date' => $faker->dateTimeBetween('now', '+6 months'),
+        'status' => $faker->randomElement(array('Registrada', 'Iniciada', 'Finalizada')),
+    ];
+});
