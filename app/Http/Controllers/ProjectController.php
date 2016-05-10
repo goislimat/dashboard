@@ -92,22 +92,48 @@ class ProjectController extends Controller
         }
         return ['error' => 'You do not have access rights to finish this action'];
     }
-    
+
     /**
-    *
-    * Authorization functions.
-    */
+     * Get the members for the project
+     *
+     * @param $id
+     * @return mixed
+     */
+    public function members($id)
+    {
+        return $this->repository->skipPresenter()->find($id)->members;
+    }
+
+    /**
+     * Check if the user own the project
+     *
+     * Authorization functions.
+     * @param $projectId
+     * @return bool
+     */
     
     private function checkIsOwner($projectId)
     {   
-        return $this->repository->isOwner($projectId, $this->userId);
+        return $this->service->isOwner($projectId, $this->userId);
     }
-    
+
+    /**
+     * Check if the user is a member in the project
+     *
+     * @param $projectId
+     * @return bool
+     */
     private function checkIsMember($projectId)
     {
-        return $this->repository->isMember($projectId, $this->userId);
+        return $this->service->isMember($projectId, $this->userId);
     }
-    
+
+    /**
+     * Check the privileges for the user
+     *
+     * @param $projectId
+     * @return bool
+     */
     private function checkPrivileges($projectId)
     {
         return ($this->checkIsOwner($projectId) || $this->checkIsMember($projectId)) ? true : false;

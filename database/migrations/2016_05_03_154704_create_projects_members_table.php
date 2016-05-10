@@ -13,14 +13,10 @@ class CreateProjectsMembersTable extends Migration
     public function up()
     {
         Schema::create('projects_members', function (Blueprint $table) {
-            $table->increments('id');
-            
             $table->integer('project_id')->unsigned();
             $table->foreign('project_id')->references('id')->on('projects');
             $table->integer('member_id')->unsigned();
             $table->foreign('member_id')->references('id')->on('users');
-            
-            $table->timestamps();
         });
     }
 
