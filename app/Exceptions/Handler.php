@@ -47,15 +47,18 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
-        if ($e instanceof ModelNotFoundException) {
+        if ($e instanceof ModelNotFoundException)
+        {
             return [
                 'error' => true,
                 'message' => 'This item doesn\'t exist' 
             ];
-        } else if ($e instanceof ValidatorException ) {
+        }
+        else if ($e instanceof ValidatorException )
+        {
             return [
                 'error' => true,
-                'message' => 'The item couldn\'t be updated or doesn\'t exist' 
+                'message' => 'The item couldn\'t be updated or doesn\'t exist'
             ];
         }
         

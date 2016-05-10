@@ -10,7 +10,7 @@ namespace Dashboard\Services;
 
 
 use Dashboard\Repositories\ProjectTaskRepository;
-use Dashboard\Validators\ProjectValidator;
+use Dashboard\Validators\ProjectTaskValidator;
 use Illuminate\Contracts\Validation\ValidationException;
 
 class ProjectTaskService
@@ -20,16 +20,16 @@ class ProjectTaskService
      */
     private $repository;
     /**
-     * @var ProjectValidator
+     * @var ProjectTaskValidator
      */
     private $validator;
 
     /**
      * ProjectTaskService constructor.
      * @param ProjectTaskRepository $repository
-     * @param ProjectValidator $validator
+     * @param ProjectTaskValidator $validator
      */
-    public function __construct(ProjectTaskRepository $repository, ProjectValidator $validator)
+    public function __construct(ProjectTaskRepository $repository, ProjectTaskValidator $validator)
     {
         $this->repository = $repository;
         $this->validator = $validator;
@@ -44,14 +44,15 @@ class ProjectTaskService
     {
         try
         {
+            //return $data;
             $this->validator->with($data)->passesOrFail();
             return $this->repository->create($data);
         }
-        catch(ValidationException $e)
+        catch(ValidatorException $e)
         {
             return [
                 'error' => true,
-                'message' => 'There are errors in your form. Please, fix them.'
+                'message' => $e->getMessage()
             ];
         }
 
@@ -73,7 +74,7 @@ class ProjectTaskService
         {
             return [
                 'error' => true,
-                'message' => 'There are errors in your form. Please, fix them.'
+                'message' => $e->getMessage()
             ];
         }
     }

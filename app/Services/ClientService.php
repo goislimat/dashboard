@@ -30,6 +30,11 @@ class ClientService
         $this->validator = $validator;
     }
 
+    /**
+     * @param array $data
+     * @return array|mixed
+     * @throws \Prettus\Validator\Exceptions\ValidatorException
+     */
     public function store(array $data) {
         try 
         {
