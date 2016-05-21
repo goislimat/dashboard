@@ -2,6 +2,7 @@
 
 namespace Dashboard\Http\Controllers;
 
+use Dashboard\Repositories\ProjectFileRepository;
 use Dashboard\Services\ProjectFileService;
 use Illuminate\Http\Request;
 
@@ -15,14 +16,25 @@ class ProjectFileController extends Controller
      * @var ProjectFileService
      */
     private $service;
+    /**
+     * @var ProjectFileRepository
+     */
+    private $repository;
 
     /**
      * ProjectFileController constructor.
      * @param ProjectFileService $service
+     * @param ProjectFileRepository $repository
      */
-    public function __construct(ProjectFileService $service)
+    public function __construct(ProjectFileService $service, ProjectFileRepository $repository)
     {
         $this->service = $service;
+        $this->repository = $repository;
+    }
+
+    public function index($projectId)
+    {
+        return $this->repository->findWhere(['project_id' => $projectId]);
     }
 
     /**

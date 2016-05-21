@@ -2,6 +2,7 @@
 
 namespace Dashboard\Repositories;
 
+use Dashboard\Presenters\ProjectFilePresenter;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Dashboard\Repositories\ProjectFileRepository;
@@ -32,5 +33,13 @@ class ProjectFileRepositoryEloquent extends BaseRepository implements ProjectFil
     public function boot()
     {
         $this->pushCriteria(app(RequestCriteria::class));
+    }
+
+    /**
+     * @return mixed
+     */
+    public function presenter()
+    {
+        return ProjectFilePresenter::class;
     }
 }

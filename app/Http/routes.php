@@ -43,6 +43,7 @@ Route::group(['middleware' => 'oauth'], function() {
         
         Route::resource('{projectId}/task', 'ProjectTaskController', ['except' => ['create', 'edit']]);
 
+        Route::get('{projectId}/file', 'ProjectFileController@index');
         Route::post('{projectId}/file', 'ProjectFileController@store');
 
         Route::get('{id}/members', 'ProjectController@members');

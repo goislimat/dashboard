@@ -12,14 +12,18 @@ use Dashboard\Entities\Project;
 class ProjectTransformer extends TransformerAbstract
 {
     protected $defaultIncludes = [
-        'members'
+        'client',
+        'members',
+        'tasks',
+        'files'
     ];
-    
+
     /**
      * Transform the \Project entity
-     * @param \Project $model
-     *
+     * @param Project $project
      * @return array
+     * @internal param \Project $model
+     *
      */
     public function transform(Project $project)
     {
@@ -34,9 +38,25 @@ class ProjectTransformer extends TransformerAbstract
             'due_date'    => $project->due_date,  
         ];
     }
+
+    public function includeClient(Project $project)
+    {
+        return $this->item($project->client, new ClientTransformer());
+    }
     
     public function includeMembers(Project $project)
     {
-        return $this->collection($project->members, new ProjectMembersTransformer);
+        return $this->collection($project->members, new ProjectMembersTransformer());
     }
+
+    public function includeTasks(Project $project)
+    {
+        return $this->collection($project->tasks, new ProjectTaskTransformer());
+    }
+
+    public function includeFiles(Project $project)
+    {
+        return $this->collection($project->files, new ProjectFileTransformer());
+    }
+
 }

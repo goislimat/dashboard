@@ -14,9 +14,9 @@ class ProjectMembersTransformer extends TransformerAbstract
 
     /**
      * Transform the \ProjectMembers entity
-     * @param \ProjectMembers $model
-     *
+     * @param User $member
      * @return array
+     * @internal param \ProjectMembers $model
      */
     public function transform(User $member)
     {
