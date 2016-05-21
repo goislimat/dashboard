@@ -11,7 +11,6 @@ use Dashboard\Entities\ProjectFile;
  */
 class ProjectFileTransformer extends TransformerAbstract
 {
-    protected $defaultIncludes = ['project'];
 
     /**
      * Transform the \ProjectFile entity
@@ -27,14 +26,6 @@ class ProjectFileTransformer extends TransformerAbstract
             'name'       => $model->name,
             'extension'  => $model->extension,
             'description'=> $model->description,
-
-            //'created_at' => $model->created_at,
-            //'updated_at' => $model->updated_at
         ];
-    }
-
-    public function includeProject(ProjectFile $model)
-    {
-        return $this->collection($model->project, new ProjectTransformer());
     }
 }

@@ -15,7 +15,8 @@ class ProjectTransformer extends TransformerAbstract
         'client',
         'members',
         'tasks',
-        'files'
+        'files',
+        'notes',
     ];
 
     /**
@@ -57,6 +58,11 @@ class ProjectTransformer extends TransformerAbstract
     public function includeFiles(Project $project)
     {
         return $this->collection($project->files, new ProjectFileTransformer());
+    }
+
+    public function includeNotes(Project $project)
+    {
+        return $this->collection($project->notes, new ProjectNoteTransformer());
     }
 
 }

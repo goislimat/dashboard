@@ -11,6 +11,7 @@ namespace Dashboard\Services;
 
 use Dashboard\Repositories\ClientRepository;
 use Dashboard\Validators\ClientValidator;
+use Prettus\Validator\Exceptions\ValidatorException;
 
 class ClientService
 {

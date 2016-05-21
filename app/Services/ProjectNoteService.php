@@ -4,6 +4,7 @@ namespace Dashboard\Services;
 
 use Dashboard\Repositories\ProjectNoteRepository;
 use Dashboard\Validators\ProjectNoteValidator;
+use Prettus\Validator\Exceptions\ValidatorException;
 
 class ProjectNoteService
 {

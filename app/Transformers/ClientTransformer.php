@@ -11,7 +11,6 @@ use Dashboard\Entities\Client;
  */
 class ClientTransformer extends TransformerAbstract
 {
-    protected $defaultIncludes = ['projects'];
 
     /**
      * Transform the \Client entity
@@ -29,14 +28,6 @@ class ClientTransformer extends TransformerAbstract
             'phone'       => $model->phone,
             'address'     => $model->address,
             'obs'         => $model->obs,
-
-            //'created_at'  => $model->created_at,
-            //'updated_at'  => $model->updated_at
         ];
-    }
-
-    public function includeProjects(Client $model)
-    {
-        return $this->collection($model->projects, new ProjectTransformer());
     }
 }

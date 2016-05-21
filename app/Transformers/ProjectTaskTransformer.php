@@ -11,7 +11,6 @@ use Dashboard\Entities\ProjectTask;
  */
 class ProjectTaskTransformer extends TransformerAbstract
 {
-    //protected $defaultIncludes = ['project'];
 
     /**
      * Transform the \ProjectTask entity
@@ -28,16 +27,6 @@ class ProjectTaskTransformer extends TransformerAbstract
             'due_date'   => $model->due_date,
             'status'     => $model->status,
             'project_id' => $model->project_id,
-            //'project' => $model->project
-
-            //'created_at' => $model->created_at,
-            //'updated_at' => $model->updated_at
         ];
-    }
-
-    public function includeProject(ProjectTask $model)
-    {
-        if($model->project)
-            return $this->item($model->project, new ProjectTransformer);
     }
 }

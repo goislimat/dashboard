@@ -12,6 +12,7 @@ namespace Dashboard\Services;
 use Dashboard\Repositories\ProjectTaskRepository;
 use Dashboard\Validators\ProjectTaskValidator;
 use Illuminate\Contracts\Validation\ValidationException;
+use Prettus\Validator\Exceptions\ValidatorException;
 
 class ProjectTaskService
 {
@@ -44,7 +45,6 @@ class ProjectTaskService
     {
         try
         {
-            //return $data;
             $this->validator->with($data)->passesOrFail();
             return $this->repository->create($data);
         }
