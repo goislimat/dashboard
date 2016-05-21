@@ -6,10 +6,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Laravel</title>
 
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
-
 	<!-- Fonts -->
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+
+	@if(\Illuminate\Support\Facades\Config::get('app.debug'))
+		<link rel="stylesheet" href="{{ asset('build/css/vendor/bootstrap.min.css') }}">
+		<link rel="stylesheet" href="{{ asset('build/css/vendor/bootstrap-theme.min.css') }}">
+	@else
+		<link rel="stylesheet" href="{{ elixir('css/all.css') }}">
+	@endif
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -60,7 +65,17 @@
 	@yield('content')
 
 	<!-- Scripts -->
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	@if(\Illuminate\Support\Facades\Config::get('app.debug'))
+		<script src="{{ asset('build/js/vendor/jquery.min.js') }}"></script>
+		<script src="{{ asset('build/js/vendor/angular.min.js') }}"></script>
+		<script src="{{ asset('build/js/vendor/angular-route.min.js') }}"></script>
+		<script src="{{ asset('build/js/vendor/angular-resource.min.js') }}"></script>
+		<script src="{{ asset('build/js/vendor/angular-animate.min.js') }}"></script>
+		<script src="{{ asset('build/js/vendor/angular-messages.min.js') }}"></script>
+		<script src="{{ asset('build/js/vendor/ui-bootstrap.min.js') }}"></script>
+		<script src="{{ asset('build/js/vendor/navbar.min.js') }}"></script>
+	@else
+		<script src="{{ elixir('js/all.js') }}"></script>
+	@endif
 </body>
 </html>
