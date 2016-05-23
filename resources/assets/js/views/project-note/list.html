@@ -1,0 +1,32 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Project Notes List</div>
+                <div class="panel-body">
+
+                    <table class="table table-condensed table-hover">
+                        <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Note</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="o in projectNotes">
+                            <td>{{o.title}}</td>
+                            <td>{{o.note | limitTo: 50}}...</td>
+                            <td>
+                                <a ng-href="#/clients/{{o.id}}/edit" class="label label-warning">Edit</a> |
+                                <a ng-href="#/clients/{{o.id}}/remove" ng-click="remove()" class="label label-danger">Delete</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

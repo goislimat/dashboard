@@ -47,6 +47,10 @@ app.config([
         .when('/clients/:id/remove', {
             templateUrl: 'build/views/client/remove.html',
             controller: 'ClientRemoveController'
+        })
+        .when('/project/:project/notes', {
+            templateUrl: 'build/views/project-note/list.html',
+            controller: 'ProjectNoteListController'
         });
 
     OAuthProvider.configure({
