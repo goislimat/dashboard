@@ -21,7 +21,7 @@ class CreateProjectTasksTable extends Migration
 			$table->string('name');
 			$table->date('start_date');
 			$table->date('due_date');
-			$table->string('status');
+			$table->smallInteger('status');
 
             $table->timestamps();
 		});

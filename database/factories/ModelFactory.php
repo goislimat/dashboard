@@ -38,7 +38,7 @@ $factory->define(Dashboard\Entities\Project::class, function (Faker\Generator $f
         'name' => $faker->word,
         'description' => $faker->sentence(20, true),
         'progress' => $faker->numberBetween(0, 100),
-        'status' => $faker->randomElement(array ('Projeto','Desenvolvimento','Produção')),
+        'status' => $faker->numberBetween(1, 3),
         'due_date' => $faker->date('Y-m-d'),
     ];
 });
@@ -57,6 +57,6 @@ $factory->define(Dashboard\Entities\ProjectTask::class, function (Faker\Generato
         'name' => $faker->sentence(3, true),
         'start_date' => $faker->dateTimeBetween('-1 month', 'now'),
         'due_date' => $faker->dateTimeBetween('now', '+6 months'),
-        'status' => $faker->randomElement(array('Registrada', 'Iniciada', 'Finalizada')),
+        'status' => $faker->numberBetween(1, 3),
     ];
 });

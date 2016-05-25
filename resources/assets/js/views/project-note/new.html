@@ -15,7 +15,7 @@
                             <label class="col-md-4 control-label">Title</label>
                             <div class="col-md-6">
                                 <input type="text" class="form-control" name="title" ng-model="projectNote.title" required>
-                                <div ng-messages="form.title.$error" class="help-block" ng-show="form.title.$touched" ng-if="!form.title.$dirty">
+                                <div ng-messages="form.title.$error" class="help-block" ng-show="form.title.$touched">
                                     <div ng-message="required">Required Field</div>
                                 </div>
                             </div>
@@ -25,7 +25,7 @@
                             <label class="col-md-4 control-label">Note</label>
                             <div class="col-md-6">
                                 <textarea class="form-control" name="note" ng-model="projectNote.note" required></textarea>
-                                <div ng-messages="form.note.$error" class="help-block" ng-show="form.note.$touched" ng-if="!form.note.$dirty">
+                                <div ng-messages="form.note.$error" class="help-block" ng-show="form.note.$touched">
                                     <div ng-message="required">Required Field</div>
                                 </div>
                             </div>

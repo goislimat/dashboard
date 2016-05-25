@@ -5,6 +5,10 @@
                 <div class="panel-heading">Projects List</div>
                 <div class="panel-body">
 
+                    <div>
+                        <a ng-href="/#/projects/new" class="label-info">Novo</a>
+                    </div>
+
                     <table class="table table-condensed table-hover">
                         <thead>
                         <tr>
@@ -25,7 +29,7 @@
                             <td>{{o.due_date | dateBr}}</td>
                             <td>
                                 <a ng-href="#/projects/{{o.id}}/edit" class="label label-warning">Edit</a> |
-                                <a ng-href="#/projects/{{o.id}}/remove" ng-click="remove(o.id)" class="label label-danger">Delete</a>
+                                <a ng-href="#/projects/{{o.id}}/remove" ng-click="remove()" class="label label-danger">Delete</a>
                             </td>
                         </tr>
                         </tbody>

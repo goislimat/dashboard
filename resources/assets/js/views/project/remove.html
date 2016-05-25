@@ -1,0 +1,21 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+
+            <h1>Remove Project</h1>
+            <hr>
+            <h2>{{ project.name }}</h2>
+            <h3>{{ project.client.data.name }} - {{ project.client.data.email }}</h3>
+            <h4>{{ project.due_date | dateBr }}</h4>
+
+            <hr>
+            <div>
+                <p>Do you really wanna remove this project?</p>
+                <button class="btn btn-danger btn-sm" ng-click="remove()">
+                    Delete
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -96,6 +96,8 @@
 
 		<script src="{{ asset('build/js/controllers/project/projectList.js') }}"></script>
 		<script src="{{ asset('build/js/controllers/project/projectNew.js') }}"></script>
+		<script src="{{ asset('build/js/controllers/project/projectEdit.js') }}"></script>
+		<script src="{{ asset('build/js/controllers/project/projectRemove.js') }}"></script>
 
 		<!-- FILTERS -->
 		<script src="{{ asset('build/js/filters/date-br.js') }}"></script>
