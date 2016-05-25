@@ -50,7 +50,12 @@ class ProjectNoteController extends Controller
      */
     public function show($projectId, $id)
     {
-        return $this->repository->findWhere(['project_id' => $projectId, 'id' => $id]);
+        $notes = $this->repository->findWhere(['project_id' => $projectId, 'id' => $id]);
+
+        if(count($notes) > 0)
+            return $notes['data'][0];
+
+        return $notes;//erro
     }
 
     /**
@@ -73,6 +78,7 @@ class ProjectNoteController extends Controller
      */
     public function destroy($projectId, $id)
     {
+        //return ['error' => true, 'message' => 'de dentro do destroy do note'];
         $this->repository->delete($id);
     }
 }

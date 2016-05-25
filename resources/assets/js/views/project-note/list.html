@@ -18,8 +18,8 @@
                             <td>{{o.title}}</td>
                             <td>{{o.note | limitTo: 50}}...</td>
                             <td>
-                                <a ng-href="#/clients/{{o.id}}/edit" class="label label-warning">Edit</a> |
-                                <a ng-href="#/clients/{{o.id}}/remove" ng-click="remove()" class="label label-danger">Delete</a>
+                                <a ng-href="#/project/{{o.project_id}}/notes/{{o.id}}/edit" class="label label-warning">Edit</a> |
+                                <a ng-href="#/project/{{o.project_id}}/notes/{{o.id}}/remove" ng-click="remove()" class="label label-danger">Delete</a>
                             </td>
                         </tr>
                         </tbody>

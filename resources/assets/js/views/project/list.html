@@ -1,0 +1,38 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Projects List</div>
+                <div class="panel-body">
+
+                    <table class="table table-condensed table-hover">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Client</th>
+                            <th>Progress</th>
+                            <th>Status</th>
+                            <th>Due Date</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="o in projects">
+                            <td>{{o.name}}</td>
+                            <td>{{o.client.data.name}}</td>
+                            <td>{{o.progress}}</td>
+                            <td>{{o.status}}</td>
+                            <td>{{o.due_date | dateBr}}</td>
+                            <td>
+                                <a ng-href="#/projects/{{o.id}}/edit" class="label label-warning">Edit</a> |
+                                <a ng-href="#/projects/{{o.id}}/remove" ng-click="remove(o.id)" class="label label-danger">Delete</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

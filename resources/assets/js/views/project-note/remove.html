@@ -1,0 +1,21 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+
+            <h1>Remove Project Note</h1>
+            <hr>
+            <h2>{{ projectNote.title }}</h2>
+            <div>
+                <p>{{ projectNote.note }}</p>
+            </div>
+            <hr>
+            <div>
+                <p>Do you really wanna remove this project note?</p>
+                <button class="btn btn-danger btn-sm" ng-click="remove()">
+                    Delete
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>

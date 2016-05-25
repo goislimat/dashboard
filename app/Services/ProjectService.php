@@ -130,6 +130,6 @@ class ProjectService
      */
     public function isOwner($projectId, $userId)
     {
-        return (count($this->findWhere(['id' => $projectId, 'owner_id' => $userId])) > 0) ? true : false;
+        return (count($this->repository->findWhere(['id' => $projectId, 'owner_id' => $userId])) > 0) ? true : false;
     }
 }

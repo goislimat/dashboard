@@ -7,6 +7,8 @@ Homestead.json
 .idea
 ./idea
 /.idea
+.idea/workspaces.xml
+.idea/tasks.xml
 /resources/bower_components
 /public/build
 /public/css
